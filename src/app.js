@@ -32,12 +32,13 @@ export default {
 }
  */
 
-//  类似于工厂函数,常见所需对象
+//  导出一个工厂函数，用于创建新的应用程序、router和store实例
 import Vue from 'vue';
 import App from './App.vue';
 
 export function createApp() {
   const app = new Vue({
+    // 根实例简单的渲染应用程序组件
     render: h => h(App)
   });
 
