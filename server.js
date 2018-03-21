@@ -1,26 +1,49 @@
-'use strict'
+'use strict';
 
-process.env.VUE_ENV = 'server'
+process.env.VUE_ENV = 'server';
 
-const fs = require('fs')
-const path = require('path')
-const express = require('express')
-const favicon = require('serve-favicon')
-const serialize = require('serialize-javascript')
-const createBundleRenderer = require('vue-server-renderer').createBundleRenderer
+const fs = require('fs');
+const path = require('path');
+const express = require('express');
+const favicon = require('serve-favicon');
+const serialize = require('serialize-javascript');
+const createBundleRenderer = require('vue-server-renderer')
+  .createBundleRenderer;
 
-const renderer = createBundleRenderer(fs.readFileSync('./dist/server-bundle.js', 'utf-8'), {
-  cache: require('lru-cache')({ max: 10000 })
-})
+const stats = [];
 
-const stats = []
+const app = express();
 
-const app = express()
+app.use(express.static(path.resolve(__dirname, 'dist')));
+const template = fs.readFileSync(
+  path.resolve(__dirname, './dist/index.ssr.html'),
+  'utf-8'
+);
 
-app.use(express.static(path.resolve(__dirname, 'dist')))
-app.use(favicon(path.resolve(__dirname, 'dist/logo.png')))
+const renderer = createBundleRenderer(
+  fs.readFileSync('./dist/server-bundle.js', 'utf-8'),
+  {
+    cache: require('lru-cache')({ max: 10000 }),
+    template: template
+  }
+);
 
-app.get('*', (req, res) => {
+app.get('/', (req, res) => {
+  const context = {
+    url: req.url
+  };
+
+  renderer.renderToString((err, html) => {
+    if (err) {
+      throw err;
+    }
+    res.end(html);
+  });
+});
+
+// app.use(favicon(path.resolve(__dirname, 'dist/logo.png')))
+
+/* app.get('*', (req, res) => {
   const start = Date.now()
   const context = { url: req.url }
   const renderStream = renderer.renderToStream(context)
@@ -52,8 +75,11 @@ app.get('*', (req, res) => {
   renderStream.on('error', err => {
     throw err
   })
-})
+}) */
 
-app.listen(3000, () => {
-  console.log('ready at localhost:3000')
-})
+app.listen(3000, err => {
+  if (err) {
+    throw err;
+  }
+  console.log('ready at localhost:3000');
+});

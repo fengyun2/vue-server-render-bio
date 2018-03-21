@@ -1,5 +1,6 @@
-const path = require('path')
-const webpack = require('webpack')
+// 已废弃
+const path = require('path');
+const webpack = require('webpack');
 
 module.exports = {
   entry: './src/client-entry.js',
@@ -9,13 +10,11 @@ module.exports = {
     filename: 'client-bundle.js'
   },
   module: {
-    loaders: [
-      { test: /\.js$/, loader: 'babel', exclude: /node_modules/ }
-    ]
+    loaders: [{ test: /\.js$/, loader: 'babel', exclude: /node_modules/ }]
   },
   plugins: [
     new webpack.DefinePlugin({
-      'process': {
+      process: {
         env: {
           NODE_ENV: JSON.stringify(process.env.NODE_ENV)
         }
@@ -23,4 +22,4 @@ module.exports = {
     })
   ],
   devtools: '#source-map'
-}
+};

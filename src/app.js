@@ -1,4 +1,4 @@
-import store from './store'
+/* import store from './store'
 import Table from './components/table'
 
 export default {
@@ -29,4 +29,17 @@ export default {
       })
     }
   }
+}
+ */
+
+//  类似于工厂函数,常见所需对象
+import Vue from 'vue';
+import App from './App.vue';
+
+export function createApp() {
+  const app = new Vue({
+    render: h => h(App)
+  });
+
+  return { app };
 }

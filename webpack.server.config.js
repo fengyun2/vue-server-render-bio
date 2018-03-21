@@ -1,6 +1,7 @@
-const webpack = require('webpack')
-const merge = require('webpack-merge')
-const webpackConfig = require('./webpack.client.config')
+// 已废弃
+const webpack = require('webpack');
+const merge = require('webpack-merge');
+const webpackConfig = require('./webpack.client.config');
 
 module.exports = merge(webpackConfig, {
   target: 'node',
@@ -11,7 +12,7 @@ module.exports = merge(webpackConfig, {
   },
   plugins: [
     new webpack.DefinePlugin({
-      'process': {
+      process: {
         env: {
           NODE_ENV: '"production"',
           VUE_ENV: '"server"'
@@ -19,4 +20,4 @@ module.exports = merge(webpackConfig, {
       }
     })
   ]
-})
+});
