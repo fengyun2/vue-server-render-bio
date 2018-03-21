@@ -28,7 +28,7 @@ const renderer = createBundleRenderer(
   }
 );
 
-app.get('/', (req, res) => {
+app.get('*', (req, res) => {
   const context = {
     title: 'Vue SSR DEMO',
     meta: `
@@ -42,7 +42,11 @@ app.get('/', (req, res) => {
 
   renderer.renderToString(context, (err, html) => {
     if (err) {
-      throw err;
+      if (err.code === 404) {
+        res.status(404).end('Page not found');
+      } else {
+        res.status(500).end('Internal Server Error');
+      }
     }
     res.end(html);
   });
