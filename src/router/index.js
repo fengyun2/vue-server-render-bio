@@ -6,6 +6,9 @@ import Router from 'vue-router';
 import Bar from '../components/Bar.vue';
 import Tom from '../components/Tom.vue';
 
+// const Bar = () => import('../components/Bar.vue');
+// const Tom = () => import('../components/Tom.vue');
+
 Vue.use(Router);
 
 export function createRouter() {
