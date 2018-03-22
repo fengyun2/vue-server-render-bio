@@ -1,10 +1,10 @@
 // webpack公用配置
 
-const path = require('path');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin');
+const path = require('path')
+const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
 
-const isProd = process.env.NODE_ENV === 'production';
+const isProd = process.env.NODE_ENV === 'production'
 
 module.exports = {
   mode: isProd ? 'production' : 'development',
@@ -37,9 +37,9 @@ module.exports = {
         test: /\.css$/,
         use: isProd
           ? ExtractTextPlugin.extract({
-              use: 'css-loader?minimize',
-              fallback: 'vue-style-loader'
-            })
+            use: 'css-loader?minimize',
+            fallback: 'vue-style-loader'
+          })
           : ['vue-style-loader', 'css-loader']
       }
     ]
@@ -50,9 +50,9 @@ module.exports = {
   },
   plugins: isProd
     ? [
-        new ExtractTextPlugin({
-          filename: 'common.[chunkhash].css'
-        })
-      ]
+      new ExtractTextPlugin({
+        filename: 'common.[chunkhash].css'
+      })
+    ]
     : [new FriendlyErrorsPlugin()]
-};
+}

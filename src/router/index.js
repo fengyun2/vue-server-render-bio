@@ -3,11 +3,11 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 
-import Bar from '../components/Bar.vue';
-import Tom from '../components/Tom.vue';
+// import Bar from '../components/Bar.vue';
+// import Tom from '../components/Tom.vue';
 
-// const Bar = () => import('../components/Bar.vue');
-// const Tom = () => import('../components/Tom.vue');
+const Bar = () => import('../components/Bar.vue');
+const Tom = () => import('../components/Tom.vue');
 
 Vue.use(Router);
 
