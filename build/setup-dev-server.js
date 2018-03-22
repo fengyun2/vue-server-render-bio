@@ -13,7 +13,7 @@ const readFile = (fs, file) => {
     return fs.readFileSync(path.join(clientConfig.output.path, file), 'utf-8')
   } catch (error) {}
 }
-module.exports = function setupDevServer (app, templatePath, cb) {
+module.exports = function setupDevServer(app, templatePath, cb) {
   let bundle
   let template
   let clientManifest

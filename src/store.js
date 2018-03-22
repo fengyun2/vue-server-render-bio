@@ -1,32 +1,37 @@
+// store.js
 import Vue from 'vue'
 import Vuex from 'vuex'
-import qs from 'qs'
+import { getTopics, getTopic } from '@/api/cnode'
 
 Vue.use(Vuex)
 
-const defaultState = {
-  count: 0,
-  url: '/',
-  rows: 100,
-  cols: 10
-}
-
-const state = typeof __INITIAL_STATE__ !== 'undefined'
-  ? __INITIAL_STATE__
-  : defaultState
-
-export default new Vuex.Store({
-  state,
-  mutations: {
-    inc: state => state.count++,
-    navigate: (state, url) => {
-      state.url = url
-      const queryIndex = url.indexOf('?')
-      if (queryIndex > 0) {
-        const query = qs.parse(url.slice(queryIndex + 1))
-        state.rows = query.r || 100
-        state.cols = query.c || 10
+export function createStore() {
+  return new Vuex.Store({
+    state: {
+      topics: [],
+      topic: {}
+    },
+    actions: {
+      getTopics({ commit }) {
+        // `store.dispatch()` 会返回 Promise,
+        // 以便我们能够知道数据在合适更新
+        return getTopics().then(topics => {
+          commit('setTopics', { topics: topics.data })
+        })
+      },
+      getTopic({ commit }, id) {
+        return getTopic(id).then(topic => {
+          commit('setTopic', { id, topic })
+        })
+      }
+    },
+    mutations: {
+      setTopics(state, { topics }) {
+        state.topics = topics
+      },
+      setTopic(state, { id, topic }) {
+        state.topic = topic
       }
     }
-  }
-})
+  })
+}

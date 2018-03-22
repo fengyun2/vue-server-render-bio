@@ -6,6 +6,10 @@ const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
 
 const isProd = process.env.NODE_ENV === 'production'
 
+function resolve(dir) {
+  return path.join(__dirname, '..', dir)
+}
+
 module.exports = {
   mode: isProd ? 'production' : 'development',
   devtool: isProd ? false : '#cheap-module-source-map',
@@ -35,12 +39,12 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        use: isProd
-          ? ExtractTextPlugin.extract({
+        use: isProd ?
+          ExtractTextPlugin.extract({
             use: 'css-loader?minimize',
             fallback: 'vue-style-loader'
-          })
-          : ['vue-style-loader', 'css-loader']
+          }) :
+          ['vue-style-loader', 'css-loader']
       }
     ]
   },
@@ -48,11 +52,16 @@ module.exports = {
     maxEntrypointSize: 300000,
     hints: isProd ? 'warning' : false
   },
-  plugins: isProd
-    ? [
+  resolve: {
+    alias: {
+      '@': resolve('src')
+    }
+  },
+  plugins: isProd ?
+    [
       new ExtractTextPlugin({
         filename: 'common.[chunkhash].css'
       })
-    ]
-    : [new FriendlyErrorsPlugin()]
+    ] :
+    [new FriendlyErrorsPlugin()]
 }

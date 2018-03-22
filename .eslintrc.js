@@ -1,5 +1,5 @@
 module.exports = {
-  extends: 'standard',
+  extends: 'vue-app',
   // required to lint *.vue files
   plugins: ['html']
 }
