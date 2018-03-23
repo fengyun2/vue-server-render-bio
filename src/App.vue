@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <top-header></top-header>
     <h1>Hello World!</h1>
     <foo></foo>
     <transition name="fade" mode="out-in">
@@ -9,9 +10,11 @@
 </template>
 
 <script>
+import TopHeader from './components/TopHeader.vue';
 import Foo from './components/Foo.vue';
 export default {
   components: {
+    TopHeader,
     Foo
   }
 };

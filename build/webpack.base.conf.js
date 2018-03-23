@@ -25,6 +25,7 @@ module.exports = {
         test: /\.vue$/,
         loader: 'vue-loader',
         options: {
+          extractCSS: isProd,
           compilerOptions: {
             preserveWhitespace: false
           }
@@ -69,6 +70,7 @@ module.exports = {
     hints: isProd ? 'warning' : false
   },
   resolve: {
+    extensions: ['.js', '.vue'],
     alias: {
       '@': resolve('src')
     }

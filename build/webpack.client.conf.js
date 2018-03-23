@@ -10,7 +10,6 @@ module.exports = merge(base, {
   // },
   entry: './src/client-entry.js',
   resolve: {
-    extensions: ['.js', '.vue'],
     alias: {
       'create-api': './create-api-client.js'
     }
