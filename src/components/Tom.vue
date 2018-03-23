@@ -9,6 +9,9 @@
 // 在这里导入模块，而不是在 `store/index.js` 中
 import tomStoreModule from '@/store/modules/tom';
 export default {
+  title() {
+    return '我是Tom页面';
+  },
   asyncData({ store }) {
     store.registerModule('tom', tomStoreModule);
     return store.dispatch('tom/inc');
