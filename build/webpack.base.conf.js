@@ -23,11 +23,17 @@ module.exports = {
     rules: [
       {
         test: /\.vue$/,
-        loader: 'vue-loader'
+        loader: 'vue-loader',
+        options: {
+          compilerOptions: {
+            preserveWhitespace: false
+          }
+        }
       },
       {
         test: /\.js$/,
-        loader: 'babel-loader'
+        loader: 'babel-loader',
+        exclude: /node_modules/
       },
       {
         test: /\.(png|jpg|gif|svg)$/,
@@ -41,10 +47,20 @@ module.exports = {
         test: /\.css$/,
         use: isProd ?
           ExtractTextPlugin.extract({
-            use: 'css-loader?minimize',
+            use: [
+              {
+                loader: 'css-loader',
+                options: {
+                  minimize: true
+                }
+              },
+              {
+                loader: 'postcss-loader'
+              }
+            ],
             fallback: 'vue-style-loader'
           }) :
-          ['vue-style-loader', 'css-loader']
+          ['vue-style-loader', 'css-loader', 'postcss-loader']
       }
     ]
   },

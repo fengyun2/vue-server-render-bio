@@ -17,12 +17,12 @@ export default {
 };
 </script>
 
-<style lang="css" >
+<style lang="css">
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
     Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
   font-size: 15px;
-  background-color: lighten(#eceef1, 30%);
+  background-color: #fff;
   margin: 0;
   padding-top: 55px;
   color: #34495e;
