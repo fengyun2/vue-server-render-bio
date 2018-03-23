@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <top-header></top-header>
+    <!-- <top-header></top-header> -->
     <transition name="fade" mode="out-in">
       <router-view class="view"></router-view>
     </transition>
@@ -8,10 +8,10 @@
 </template>
 
 <script>
-import TopHeader from './components/TopHeader.vue';
+// import TopHeader from './components/TopHeader.vue';
 export default {
   components: {
-    TopHeader
+    // TopHeader
   }
 };
 </script>

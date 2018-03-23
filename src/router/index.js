@@ -1,20 +1,22 @@
 // router.js
 /* 类似于createApp, 我们也需要给每个请求一个新的router实例，所以文件导出一个createRouter函数 */
-import Vue from 'vue';
-import Router from 'vue-router';
+import Vue from 'vue'
+import Router from 'vue-router'
 
 // import Bar from '../components/Bar.vue';
 // import Tom from '../components/Tom.vue';
 
-const Bar = () => import('../components/Bar.vue');
-const Tom = () => import('../components/Tom.vue');
+const Index = () => import('../views/index')
+const Bar = () => import('../components/Bar.vue')
+const Tom = () => import('../components/Tom.vue')
 
-Vue.use(Router);
+Vue.use(Router)
 
 export function createRouter() {
   return new Router({
     mode: 'history',
     routes: [
+      { path: '/', name: 'index', component: Index },
       {
         path: '/bar',
         name: 'bar',
@@ -26,5 +28,5 @@ export function createRouter() {
         component: Tom
       }
     ]
-  });
+  })
 }
