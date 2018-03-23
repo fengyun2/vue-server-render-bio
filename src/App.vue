@@ -1,8 +1,6 @@
 <template>
   <div id="app">
     <top-header></top-header>
-    <h1>Hello World!</h1>
-    <foo></foo>
     <transition name="fade" mode="out-in">
       <router-view class="view"></router-view>
     </transition>
@@ -11,11 +9,9 @@
 
 <script>
 import TopHeader from './components/TopHeader.vue';
-import Foo from './components/Foo.vue';
 export default {
   components: {
-    TopHeader,
-    Foo
+    TopHeader
   }
 };
 </script>
@@ -27,7 +23,6 @@ body {
   font-size: 15px;
   background-color: #fff;
   margin: 0;
-  padding-top: 55px;
   color: #34495e;
   overflow-y: scroll;
 }

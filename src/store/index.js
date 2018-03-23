@@ -9,28 +9,45 @@ export function createStore() {
   return new Vuex.Store({
     state: {
       topics: [],
-      topic: {}
+      topic: {},
+      loading: false
     },
     actions: {
-      getTopics({ commit }) {
+      getTopics({ commit }, params = {}) {
         // `store.dispatch()` 会返回 Promise,
         // 以便我们能够知道数据在合适更新
-        return getTopics().then(topics => {
-          commit('setTopics', { topics: topics.data })
-        })
+        commit('setLoading', { loading: true })
+        return getTopics(params)
+          .then(topics => {
+            commit('setTopics', { topics: topics.data })
+            commit('setLoading', { loading: false })
+          })
+          .catch(() => {
+            commit('setLoading', { loading: false })
+          })
       },
       getTopic({ commit }, id) {
-        return getTopic(id).then(topic => {
-          commit('setTopic', { id, topic })
-        })
+        commit('setLoading', { loading: true })
+        return getTopic(id)
+          .then(topic => {
+            commit('setTopic', { id, topic })
+            commit('setLoading', { loading: false })
+          })
+          .catch(() => {
+            commit('setLoading', { loading: false })
+          })
       }
     },
     mutations: {
       setTopics(state, { topics }) {
-        state.topics = topics
+        // state.topics = topics
+        state.topics.push(...topics)
       },
       setTopic(state, { id, topic }) {
         state.topic = topic
+      },
+      setLoading(state, { loading }) {
+        state.loading = loading
       }
     }
   })
