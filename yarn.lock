@@ -1313,6 +1313,10 @@ camel-case@3.0.x:
     no-case "^2.2.0"
     upper-case "^1.1.1"
 
+camelcase-css@^1.0.1:
+  version "1.0.1"
+  resolved "http://registry.npm.taobao.org/camelcase-css/download/camelcase-css-1.0.1.tgz#157c4238265f5cf94a1dffde86446552cbf3f705"
+
 camelcase@^4.1.0:
   version "4.1.0"
   resolved "http://registry.npm.taobao.org/camelcase/download/camelcase-4.1.0.tgz#d545635be1e33c542649c69173e5de6acfae34dd"
@@ -5230,6 +5234,13 @@ postcss-initial@^2.0.0:
     lodash.template "^4.2.4"
     postcss "^6.0.1"
 
+postcss-js@^1.0.1:
+  version "1.0.1"
+  resolved "http://registry.npm.taobao.org/postcss-js/download/postcss-js-1.0.1.tgz#ffaf29226e399ea74b5dce02cab1729d7addbc7b"
+  dependencies:
+    camelcase-css "^1.0.1"
+    postcss "^6.0.11"
+
 postcss-load-config@^1.1.0, postcss-load-config@^1.2.0:
   version "1.2.0"
   resolved "http://registry.npm.taobao.org/postcss-load-config/download/postcss-load-config-1.2.0.tgz#539e9afc9ddc8620121ebf9d8c3673e0ce50d28a"
@@ -5338,6 +5349,16 @@ postcss-minify-selectors@^2.0.4:
     has "^1.0.1"
     postcss "^5.0.14"
     postcss-selector-parser "^2.0.0"
+
+postcss-mixins@^6.2.0:
+  version "6.2.0"
+  resolved "http://registry.npm.taobao.org/postcss-mixins/download/postcss-mixins-6.2.0.tgz#fa9d2c2166b2ae7745956c727ab9dd2de4b96a40"
+  dependencies:
+    globby "^6.1.0"
+    postcss "^6.0.13"
+    postcss-js "^1.0.1"
+    postcss-simple-vars "^4.1.0"
+    sugarss "^1.0.0"
 
 postcss-modules-extract-imports@^1.2.0:
   version "1.2.0"
@@ -5590,7 +5611,7 @@ postcss@^5.0.10, postcss@^5.0.11, postcss@^5.0.12, postcss@^5.0.13, postcss@^5.0
     source-map "^0.5.6"
     supports-color "^3.2.3"
 
-postcss@^6, postcss@^6.0, postcss@^6.0.0, postcss@^6.0.11, postcss@^6.0.14, postcss@^6.0.16, postcss@^6.0.17, postcss@^6.0.18, postcss@^6.0.19, postcss@^6.0.20, postcss@^6.0.21, postcss@^6.0.5, postcss@^6.0.6, postcss@^6.0.9:
+postcss@^6, postcss@^6.0, postcss@^6.0.0, postcss@^6.0.11, postcss@^6.0.13, postcss@^6.0.14, postcss@^6.0.16, postcss@^6.0.17, postcss@^6.0.18, postcss@^6.0.19, postcss@^6.0.20, postcss@^6.0.21, postcss@^6.0.5, postcss@^6.0.6, postcss@^6.0.9:
   version "6.0.21"
   resolved "http://registry.npm.taobao.org/postcss/download/postcss-6.0.21.tgz#8265662694eddf9e9a5960db6da33c39e4cd069d"
   dependencies:
@@ -6652,6 +6673,12 @@ style-loader@^0.20.3:
   dependencies:
     loader-utils "^1.1.0"
     schema-utils "^0.4.5"
+
+sugarss@^1.0.0:
+  version "1.0.1"
+  resolved "http://registry.npm.taobao.org/sugarss/download/sugarss-1.0.1.tgz#be826d9003e0f247735f92365dc3fd7f1bae9e44"
+  dependencies:
+    postcss "^6.0.14"
 
 supports-color@^2.0.0:
   version "2.0.0"

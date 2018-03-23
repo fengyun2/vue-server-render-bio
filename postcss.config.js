@@ -2,6 +2,7 @@ module.exports = ctx => ({
   parser: 'postcss-scss',
   plugins: {
     'postcss-simple-vars': {},
+    'postcss-mixins': {},
     precss: {},
     'postcss-nested-props': {},
     'postcss-nested': {
